@@ -2,8 +2,6 @@
 layout: home
 ---
 
-# My Gif Collection
+# Ma bibliothèque de GIFS
 
-<p>Oh Hai! You've found my Gif collection. <br>Fork me on GitHub at <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> <br> (Hover to preview an image)</p>
-
-<p>Import into Gifwit with my <a href="library.gifwit">library</a>.</p>
+<p>Salut ! Bienvenue dans ma collection de GIFS. <br>N'hésitez pas à me forker sur GitHub : <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> <br> (Survolez une image pour l'afficher)<br><br>Ce projet est un fork inspiré de [Joel Glovier](https://github.com/jglovier/gifs)</p>
