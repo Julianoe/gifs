@@ -28,10 +28,11 @@ $purple:              #d070d1;
   @include sans;
   font-weight: 400;
 }
-@mixin sans_extrabold {
-  @include sans;
-  font-weight: 800;
-}
+
+::-webkit-input-placeholder { color: #97afc8; }
+:-moz-placeholder { color: #97afc8; } /* Firefox 18- */
+::-moz-placeholder { color: #97afc8; } /* Firefox 19+ */
+:-ms-input-placeholder { color: #97afc8; }
 
 // @group main styles --------------------
 
@@ -56,7 +57,6 @@ body{
   position: fixed;
   left: 0; top: 0; bottom: 0;
   color: white;
-  text-align: center;
   font-size: 14px;
   color: $blue_text_lht;
 
@@ -66,11 +66,15 @@ body{
     padding-bottom: 20px;
   }
 
+  .header-content { padding: 0 10px; }
+
   h1 {
-    @include sans_extrabold;
+    @include sans_regular;
     color: white;
     letter-spacing: -.05em;
     font-size: 2rem;
+    margin: 14px 0;
+    color: #00bd9c;
   }
 
   .img-preview {
@@ -83,6 +87,18 @@ body{
     @media (max-width: 600px) { height: 300px; }
     @media (max-width: 500px) { height: 250px; }
     @media (max-width: 400px) { height: 200px; }
+  }
+
+  .filter {
+    input {
+      width: 100%;
+      height: 30px;
+      border: none;
+      border-radius: 3px;
+      padding: 3px 6px;
+      background: $navy_bg_light;
+      color: $blue_text_lht;
+    }
   }
 
   .banner-img {
@@ -99,13 +115,17 @@ body{
     z-index: 2;
     display: none;
 
-    &[src*=".gif"] { display: block; }
+    &[src*=".gif"],
+    &[src*=".png"],
+    &[src*=".jpg"] {
+      display: block;
+    }
 
   }
 
-  a {
-    color: $green;
-    font-weight: bold; }
+  a { color: $blue_text_lht; }
+
+  a.fork-me-at { color: $green; }
 }
 
 .gif-listing {
@@ -118,27 +138,17 @@ body{
   // Style the list of categories
 
   > ul {
-    display: flex;
-    flex-wrap: wrap;
     margin: 0; padding: 0;
     list-style: none;
-    // experimental column support
-    // -moz-column-gap: 20px;
-    // -moz-column-fill: auto;
-    // -webkit-column-count: 3;
-    // -webkit-column-gap: 20px;
-    // -webkit-column-fill: auto;
-    // column-count: 3;
-    // column-gap: 20px;
-    // column-fill: auto;
+    columns: 3;
+    column-gap: 20px;
+
 
     @media (max-width: 1024px) {
-      // -webkit-column-count: 2;
-      // column-count: 2;
+      columns: 2;
     }
     @media (max-width: 895px) {
-      // -webkit-column-count: 1;
-      // column-count: 1;
+      columns: 1;
     }
 
     // Style individual category cards
@@ -147,15 +157,16 @@ body{
       border-radius: 10px;
       padding: 6px 10px;
       margin: 0 0 20px 0;
-      margin: 20px;
-
       text-transform: capitalize;
       font-size: 24px;
-      //  experimental column support
-      // -moz-column-break-inside: avoid;
-      // -webkit-column-break-inside: avoid;
-      // column-break-inside: avoid;
       color: $green;
+      display: inline-block;
+      width: 100%;
+
+      &.hidden {
+        display: none;
+        margin: 0;
+      }
 
       // Style the sub-list of gifs
       > ul {
@@ -175,6 +186,11 @@ body{
           border-radius: 5px;
           padding: 0;
           margin: 0 0 5px 0;
+
+          &.hidden {
+            display: none;
+            margin: 0;
+          }
 
           // Style individual gif links
           a {
