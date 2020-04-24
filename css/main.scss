@@ -118,25 +118,27 @@ body{
   // Style the list of categories
 
   > ul {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0; padding: 0;
     list-style: none;
     // experimental column support
-    -moz-column-gap: 20px;
-    -moz-column-fill: auto;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 20px;
-    -webkit-column-fill: auto;
-    column-count: 3;
-    column-gap: 20px;
-    column-fill: auto;
+    // -moz-column-gap: 20px;
+    // -moz-column-fill: auto;
+    // -webkit-column-count: 3;
+    // -webkit-column-gap: 20px;
+    // -webkit-column-fill: auto;
+    // column-count: 3;
+    // column-gap: 20px;
+    // column-fill: auto;
 
     @media (max-width: 1024px) {
-      -webkit-column-count: 2;
-      column-count: 2;
+      // -webkit-column-count: 2;
+      // column-count: 2;
     }
     @media (max-width: 895px) {
-      -webkit-column-count: 1;
-      column-count: 1;
+      // -webkit-column-count: 1;
+      // column-count: 1;
     }
 
     // Style individual category cards
@@ -145,12 +147,14 @@ body{
       border-radius: 10px;
       padding: 6px 10px;
       margin: 0 0 20px 0;
+      margin: 20px;
+
       text-transform: capitalize;
       font-size: 24px;
       //  experimental column support
-      -moz-column-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      column-break-inside: avoid;
+      // -moz-column-break-inside: avoid;
+      // -webkit-column-break-inside: avoid;
+      // column-break-inside: avoid;
       color: $green;
 
       // Style the sub-list of gifs
